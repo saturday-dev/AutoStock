@@ -72,7 +72,7 @@ url = 'https://openapi.koreainvestment.com:9443'
 file = open('acntNo.txt', 'r')
 acntNo = file.read()
 file.close()
-
+# 해당 파일들은 한국투자증권에서 api를 허용하면 제공되는 파일들임.
 file = open('appKey.txt', 'r')
 appKey = file.read()
 file.close()
@@ -94,6 +94,7 @@ dtStart = str(dtStart.date()).replace('-','')
 
 print(dtStart + '~' + dtEnd)
 
+# 토요일, 일요일에 돌려보기 위하여 마련된 기능
 inputDate = input('다른 날짜를 입력하시겠습니까? C to Continue, Q to quit, date = date   >>> ')
 
 if inputDate == 'C'  or inputDate == 'c' or inputDate == '':
@@ -115,7 +116,7 @@ def getDays30(iscd):
         'appKey': appKey,
         'appSecret': appSecret,
         'authorization': 'Bearer ' + accessToken,
-        'tr_id':'FHKST01010400',
+        'tr_id':'FHKST01010400', # api 권한에따른 id 값임.
         'tr_cont':'',
         'custtype':'P',
         #'mac_address':macAddress
@@ -165,8 +166,8 @@ def getPeriod(iscd, start, end):
 
     return output
 
-# HashKey
-def getHashKey(datas):
+# HashKey 
+def getHashKey(datas): # 데이터를 넣어 hashkey를 가져오는 함수
     sendUrl = url + '/uapi/hashkey'
     #print(sendUrl)
     res = requests.post(sendUrl, headers=headers, data=json.dumps(datas))
@@ -209,7 +210,7 @@ def getAcntList(CTX_AREA_FK100, CTX_AREA_NK100):
     return res
 
 # 스토케스틱
-def getStochestic(val, hVal, lVal):
+def getStochestic(val, hVal, lVal): # 고가, 저가를 이용하여 계산하는 것임.
 
     chart_history = []
     chart_h_history = []
@@ -289,12 +290,12 @@ jongTemp = []
 for item in acntJsonOutput1:
     jongTemp.append({
             'iscd': item['pdno'],
-            'name': item['prdt_name'],
-            'price': int(item['prpr']),
-            'amto' : int(item['pchs_amt']),
-            'amt': int(item['evlu_amt']),
-            'profit': int(item['evlu_pfls_amt']),
-            'qty':int(item['hldg_qty'])
+            'name': item['prdt_name'],                   # 종목명
+            'price': int(item['prpr']),             # 가격
+            'amto' : int(item['pchs_amt']),         # 구매 금액 
+            'amt': int(item['evlu_amt']),           # 현재 평가 금액
+            'profit': int(item['evlu_pfls_amt']),   # 현재 이득
+            'qty':int(item['hldg_qty'])             # 보유수량
         })
 
 print("보유 제외종목##########################")
