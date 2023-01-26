@@ -1,6 +1,6 @@
 # 자동 주식 투자 코드 
 
-본 코드의 출처와 Youtue URL은 leebyeungkok님의 깃헙과 유튜브에서 가져왔습니다.
+본 코드와 Youtue URL은 leebyeungkok님의 깃헙과 유튜브에서 가져왔습니다.
 
 이 README.md파일은 저의 정리를 위해 작성해두었습니다.
 
