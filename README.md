@@ -4,7 +4,7 @@
 
 이 README.md파일은 저의 정리를 위해 작성해두었습니다.
 
-* 원본 출처
+## 원본 출처
 - Github : https://github.com/leebyeungkok/AutoStock
 - Youtuebe url : https://youtu.be/INVf28ZyJGM
 
